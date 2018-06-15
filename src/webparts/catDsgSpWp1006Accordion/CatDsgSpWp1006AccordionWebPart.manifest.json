@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "9d4a310c-ad76-4da3-8776-7bd47f6fc73c",
+  "alias": "CatDsgSpWp1006",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "59a98142-add4-4747-8d48-029b0b0ab8d9",
+    "group": {
+      "default": "Catapult Systems"
+    },
+    "title": { 
+      "default": "Accordion",
+      "zh-cn":"折叠控件" },
+    "description": { 
+      "default": "Display Data From Specific List In Accordion Mode",
+      "zh-cn":"以折叠控件显示列表里的数据" },
+    "officeFabricIconFontName": "Trackers",
+    "properties": {
+      "description": "Display Data From Specific List In Accordion Mode"
+    }
+  }]
+}

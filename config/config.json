@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "cat-dsg-sp-wp-1006-accordion-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/catDsgSpWp1006Accordion/CatDsgSpWp1006AccordionWebPart.js",
+          "manifest": "./src/webparts/catDsgSpWp1006Accordion/CatDsgSpWp1006AccordionWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CatDsgSpWp1006AccordionWebPartStrings": "lib/webparts/catDsgSpWp1006Accordion/loc/{locale}.js"
+  }
+}

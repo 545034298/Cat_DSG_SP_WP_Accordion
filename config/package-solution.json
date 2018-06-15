@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Catapult Systems - Accordion",
+    "id": "83681a11-f691-4a73-8fea-8bfabcb333df",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/cat-dsg-sp-wp-1006-accordion.sppkg"
+  }
+}
