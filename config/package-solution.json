@@ -3,7 +3,7 @@
   "solution": {
     "name": "Catapult Systems - Accordion",
     "id": "83681a11-f691-4a73-8fea-8bfabcb333df",
-    "version": "1.0.0.0",
+    "version": "1.0.0.2",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },

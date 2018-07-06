@@ -11,7 +11,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './CatDsgSpWp1006AccordionWebPart.module.scss';
 import * as strings from 'CatDsgSpWp1006AccordionWebPartStrings';
-import CatDsgSpWp1006jQueryLoader from './CatDsgSpWp1006jQueryLoader';
+import CatDsgSpWp1006ScriptLoader from './CatDsgSpWp1006ScriptLoader';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 require('./CatDsgSpWp1006AccordionWebPart.scss');
@@ -60,7 +60,7 @@ export default class CatDsgSpWp1006AccordionWebPart extends BaseClientSideWebPar
   }
   public render(): void {
     this.context.statusRenderer.clearError(this.domElement);
-    this.properties.description=strings.catDsgSpWp1006AccordionDescription;
+    this.properties.description = strings.catDsgSpWp1006AccordionDescription;
     this.domElement.innerHTML = `
       <div class="${ styles.catDsgSpWp1006Accordion}">
         <div class="${ styles.container}">
@@ -72,7 +72,21 @@ export default class CatDsgSpWp1006AccordionWebPart extends BaseClientSideWebPar
           </div>
         </div>
       </div>`;
-    CatDsgSpWp1006jQueryLoader.LoadDependencies("https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js", ["https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.min.js"]).then((object) => {
+    let script: CatDsgSpWp1006ScriptLoader.IScript = {
+      Url: "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js",
+      GlobalExportsName: "jQuery",
+      WindowPropertiesChain: "jQuery"
+    };
+
+    let dependencies: CatDsgSpWp1006ScriptLoader.IScript[] = [
+      {
+        Url: "https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.min.js",
+        GlobalExportsName: "jqueryui",
+        WindowPropertiesChain: "jQuery.ui"
+      }
+    ];
+
+    CatDsgSpWp1006ScriptLoader.LoadScript(script, dependencies).then((object) => {
       if ((this.properties.listName == null || (this.properties.listName != null && this.properties.listName.trim() == '')) ||
         (this.properties.headerColumnName == null || this.properties.headerColumnName != null && this.properties.headerColumnName.trim() == '') ||
         (this.properties.contentColumnName == null || this.properties.contentColumnName != null && this.properties.contentColumnName.trim() == '')) {
@@ -93,19 +107,21 @@ export default class CatDsgSpWp1006AccordionWebPart extends BaseClientSideWebPar
               }
             }
             else {
-              accordionsHtml+=strings.catDsgSpWp1006AccordionNoDataMessage;
+              accordionsHtml += strings.catDsgSpWp1006AccordionNoDataMessage;
             }
           }
           else {
-            accordionsHtml+=strings.catDsgSpWp1006AccordionNoDataMessage;
+            accordionsHtml += strings.catDsgSpWp1006AccordionNoDataMessage;
           }
-          this.domElement.querySelector('.'+styles.catDsgSpWp1006AccordionContainer).innerHTML=accordionsHtml;
-          ($(this.domElement).find('.'+styles.catDsgSpWp1006AccordionContainer) as any).accordion();
+          this.domElement.querySelector('.' + styles.catDsgSpWp1006AccordionContainer).innerHTML = accordionsHtml;
+          ($(this.domElement).find('.' + styles.catDsgSpWp1006AccordionContainer) as any).accordion();
 
         }, (error: any) => {
           this.context.statusRenderer.renderError(this.domElement, error);
         });
       }
+    }, error => {
+      alert(error);
     });
   }
 
